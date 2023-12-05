@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "RC6_Django", "RC6_Django\RC6_Django.pyproj", "{743367F1-BCCE-4DA5-AD80-895854AA3806}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{668A3389-3BAB-4176-9581-6571223B0434}"
+	ProjectSection(SolutionItems) = preProject
+		RC6_Django\units.py = RC6_Django\units.py
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{743367F1-BCCE-4DA5-AD80-895854AA3806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{743367F1-BCCE-4DA5-AD80-895854AA3806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{743367F1-BCCE-4DA5-AD80-895854AA3806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{743367F1-BCCE-4DA5-AD80-895854AA3806}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0BD77B6-1C2E-42F0-A130-D3CC0D6A0F27}
+	EndGlobalSection
+EndGlobal

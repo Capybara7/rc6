@@ -1,0 +1,2 @@
+C:\Users\User\Desktop\RC6_Django\RC6_Django\obj\Any CPU\Debug\RC6_Django.pyproj.SuggestedBindingRedirects.cache
+C:\Users\User\Desktop\RC6_Django\RC6_Django\obj\Any CPU\Debug\RC6_Django.pyproj.CoreCompileInputs.cache

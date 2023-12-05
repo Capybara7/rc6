@@ -1,0 +1,2 @@
+C:\Users\User\Desktop\RC6\TwoFishDjango\obj\Any CPU\Debug\TwoFishDjango.pyproj.SuggestedBindingRedirects.cache
+C:\Users\User\Desktop\RC6\TwoFishDjango\obj\Any CPU\Debug\TwoFishDjango.pyproj.CoreCompileInputs.cache

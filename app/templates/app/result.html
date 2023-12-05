@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RC6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-size: 18px;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .form-group input[type="file"],
+            .form-group input[type="password"] {
+                padding: 10px;
+                border: 1px solid #cccccc;
+                border-radius: 3px;
+                width: 100%;
+            }
+
+            .form-group select {
+                padding: 10px;
+                border: 1px solid #cccccc;
+                border-radius: 3px;
+                width: 100%;
+            }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .result img {
+            max-width: 100%;
+            margin-top: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+        .list-container {
+            display: flex;
+        }
+
+            .list-container div {
+                flex: 1;
+            }
+
+                .list-container div ul {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                    .list-container div ul li {
+                        list-style-type: none;
+                    }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+            .video-background video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+    </style>
+</head>
+<body>
+    <h1>Результат шифрования</h1>
+    {% load static %}
+
+    <div class="video-background">
+        <video src="{% static 'video.mp4' %}" autoplay loop muted></video>
+    </div>
+
+    <div class="result" id="result-container">
+        <input type="hidden" id="hiddenInput" name="hiddenInput" value="{{ cipher_mode }}">
+
+        <div class="list-container">
+            <div>
+                <h2>Изначальное фото:</h2>
+                <img src="{% static 'img.png' %}" alt="Изначальное фото">
+                <div id="lest1" name="lest1">
+                    <h2>Исходное изображение:</h2>
+                    <ul id="list1">
+                        <li>Энтропия: {{ res_src_entropy }}</li>
+                        <li>Корреляция H: {{ res_src_covar_h }}</li>
+                        <li>Корреляция V: {{ res_src_covar_v }}</li>
+                        <li>Корреляция D: {{ res_src_covar_d }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h2 id="result-heading"></h2>
+                <img id="resultImage" src="{% static 'enc.png' %}" alt="Зашифрованное/Дешифрованное фото">
+                <div id="lest2" name="lest2">
+                    <h2>Зашифрованное изображение:</h2>
+                    <ul id="list1">
+                        <li>Энтропия: {{ res_enc_entropy }}</li>
+                        <li>Корреляция H: {{ res_enc_covar_h }}</li>
+                        <li>Корреляция V: {{ res_enc_covar_v }}</li>
+                        <li>Корреляция D: {{ res_enc_covar_d }}</li>
+                        <li>NPCR: {{ npcr_label }}</li>
+                        <li>UACI: {{ uaci_label }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Получите ссылку на элементы <h2> и <img>
+        var resultHeading = document.getElementById('result-heading');
+        var resultImage = document.getElementById('resultImage');
+        var list1 = document.getElementById('lest1');
+        var list2 = document.getElementById('lest2');
+        var lab = document.getElementById('npcr-label');
+
+        // Определите переменную isEncrypted (true - зашифрованное, false - дешифрованное)
+        var isEncrypted = document.getElementById('hiddenInput').value;
+
+        // Установите соответствующий заголовок и изображение на основе значения isEncrypted
+        if (isEncrypted == 'True') {
+            resultHeading.innerText = 'Зашифрованное фото:';
+            resultImage.src = "{% static 'enc.png' %}";
+            resultImage.alt = 'Зашифрованное фото';
+        }
+        else {
+            list1.style.display = "none";
+            list2.style.display = "none";
+            resultHeading.innerText = 'Расшифрованное фото:';
+            resultImage.src = "{% static 'dec.png' %}";
+            resultImage.alt = 'Расшифрованное фото';
+        }
+
+        // Отобразите блок с зашифрованным/дешифрованным фото
+        var resultContainer = document.getElementById('result-container');
+        resultContainer.style.display = 'block';
+    </script>
+</body>
+</html>
